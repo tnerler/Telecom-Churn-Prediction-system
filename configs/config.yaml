@@ -1,0 +1,12 @@
+data:
+  path: "data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv"
+
+split:
+  test_size: 0.2
+  random_state: 42
+
+training:
+  random_state: 42
+
+evaluation:
+  threshold: 0.5
