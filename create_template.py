@@ -1,51 +1,73 @@
-import os
 from pathlib import Path
 
-def create_ml_template():
-    root = Path(os.getcwd())
-    src_dir = root / "src" 
-    
-    print(f"Initializing production ML structure at: {root}\n")
+# ===========================
+# Configuration
+# ===========================
 
-    # 1. Define all directories to build
-    dirs_to_create = [
-        root / "configs" / "model",
-        root / "data" / "raw",
-        root / "data" / "processed",
-        root / "notebooks",
-        src_dir,
-        root / "tests"
-    ]
-    
-    for folder in dirs_to_create:
-        folder.mkdir(parents=True, exist_ok=True)
-        print(f"Created directory: {folder.relative_to(root.parent)}")
+PROJECT_NAME = "churn_prediction"
 
-    # 2. Define empty files or simple stubs
-    files_to_touch = [
-        root / ".gitignore",
-        root / "README.md",
-        root / "pyproject.toml",
-        root / "requirements.txt",
-        root / "configs" / "config.yaml",
-        root / "configs" / "model" / "baseline.yaml",
-        root / "data" / "raw" / ".gitkeep",
-        root / "data" / "processed" / ".gitkeep",
-        root / "notebooks" / "01_exploration.ipynb",
-        src_dir / "__init__.py",
-        src_dir / "data_loader.py",
-        src_dir / "modeling.py",
-        src_dir / "utils.py",
-        src_dir / "pipeline.py",
-        root / "tests" / "test_pipeline.py"
-    ]
+DIRECTORIES = [
+    "data/raw",
+    "data/interim",
+    "data/processed",
+    "notebooks",
+    "src",
+    "src/data",
+    "src/features",
+    "src/models",
+    "src/visualization",
+    "src/utils",
+    "configs",
+    "models",
+    "reports/figures",
+    "tests",
+]
 
-    # 3. Create all files empty
-    for path in files_to_touch:
-        path.touch()
-        print(f"Generated file: {path.relative_to(root.parent)}")
+FILES = {
+    ".gitignore": "",
+    "requirements.txt": "",
+    "main.py": "",
 
-    print("\nClean template structure generated successfully!")
+    "configs/config.yaml": "",
+
+    "src/__init__.py": "",
+    "src/data/__init__.py": "",
+    "src/data/load_data.py": "",
+    "src/data/preprocess.py": "",
+
+    "src/features/__init__.py": "",
+    "src/features/feature_engineering.py": "",
+
+    "src/models/__init__.py": "",
+    "src/models/train.py": "",
+    "src/models/evaluate.py": "",
+    "src/models/predict.py": "",
+
+    "src/visualization/__init__.py": "",
+    "src/visualization/plots.py": "",
+
+    "src/utils/__init__.py": "",
+    "src/utils/helpers.py": "",
+
+    "tests/__init__.py": "",
+    "tests/test_data.py": "",
+    "tests/test_models.py": "",
+}
+
+
+def create_project(project_name: str):
+    root = Path(project_name)
+
+    for directory in DIRECTORIES:
+        (root / directory).mkdir(parents=True, exist_ok=True)
+
+    for file_path, content in FILES.items():
+        path = root / file_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+
+    print(f"✅ Project '{project_name}' created successfully!")
+
 
 if __name__ == "__main__":
-    create_ml_template()
+    create_project(PROJECT_NAME)
