@@ -157,7 +157,7 @@ Campaign size:
 - TP + FP = **15 customers**
 
 
-Campaign cost:
+Campaign cost (because we gave free service to the customers who are predicted to churn for 2 months):
 
 
 - 15 × $40 = **$600**
@@ -245,3 +245,42 @@ $7,200 − $3,480 = **$3,720**
 
 
 The machine learning model reduces the company's expected loss by approximately **52%**, while enabling the business to target retention offers only to customers who are most likely to churn
+
+
+
+# Notebook structure
+notebooks/<br>
+│<br>
+├── 01_data_understanding.ipynb<br>
+├── 02_exploratory_data_analysis.ipynb<br>
+├── 03_data_preprocessing.ipynb<br>
+├── 04_feature_engineering.ipynb<br>
+├── 05_baseline_model.ipynb<br>
+├── 06_model_comparison.ipynb<br>
+├── 07_hyperparameter_tuning.ipynb<br>
+├── 08_model_evaluation.ipynb<br>
+├── 09_business_evaluation.ipynb<br>
+└── 10_model_explainability.ipynb<br>
+
+## 01_data_understanding.ipynb
+1. Load data
+2. Inspect shape
+3. Inspect columns
+4. Data types
+5. Missing values
+6. Duplicates
+7. Unique values
+8. Summary statistics
+9. Target distribution
+10. Invalid values
+
+--------------------
+
+## 02_exploratory_data_analysis.ipynb
+- Univariate analysis
+- Target analysis
+- Numerical features
+- Categorical features
+- Correlation analysis
+- Outlier analysis
+- Relationship with target
