@@ -219,3 +219,6 @@ __marimo__/
 
 # Data
 churn_prediction/data/
+
+# CatBoost training logs
+catboost_info/
